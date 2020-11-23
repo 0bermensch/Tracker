@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Context as TrackContext } from "../context/TrackContext";
 import MapView, { Polyline } from "react-native-maps";
 
@@ -27,10 +27,10 @@ const TrackDetailScreen = ({ navigation }) => {
   );
 };
 
-export default TrackDetailScreen;
-
 const styles = StyleSheet.create({
   map: {
     height: 300,
   },
 });
+
+export default TrackDetailScreen;

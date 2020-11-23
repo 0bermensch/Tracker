@@ -12,7 +12,10 @@ export default (shouldTrack, callback) => {
     let subscriber;
     const startWatching = async () => {
       try {
-        await requestPermissionsAsync();
+        const { granted } = await requestPermissionsAsync();
+        if (!granted) {
+          throw new Error("Location permission not granted");
+        }
         subscriber = await watchPositionAsync(
           {
             accuracy: Accuracy.BestForNavigation,
@@ -34,6 +37,7 @@ export default (shouldTrack, callback) => {
       }
       subscriber = null;
     }
+
     return () => {
       if (subscriber) {
         subscriber.remove();

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
 import { NavigationEvents } from "react-navigation";
 import { ListItem } from "react-native-elements";
 import { Context as TrackContext } from "../context/TrackContext";
 
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
+
   return (
     <>
       <NavigationEvents onWillFocus={fetchTracks} />
@@ -19,7 +20,7 @@ const TrackListScreen = ({ navigation }) => {
                 navigation.navigate("TrackDetail", { _id: item._id })
               }
             >
-              <ListItem chevron tile={item.name} />
+              <ListItem title={item.name} />
             </TouchableOpacity>
           );
         }}

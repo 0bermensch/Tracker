@@ -16,7 +16,7 @@ const TrackCreateScreen = ({ isFocused }) => {
   } = useContext(LocationContext);
   const callback = useCallback(
     (location) => {
-      addLocation(location, state.recording);
+      addLocation(location, recording);
     },
     [recording]
   );
@@ -37,6 +37,6 @@ TrackCreateScreen.navigationOptions = {
   tabBarIcon: <FontAwesome name="plus" size={20} />,
 };
 
-export default withNavigationFocus(TrackCreateScreen);
-
 const styles = StyleSheet.create({});
+
+export default withNavigationFocus(TrackCreateScreen);

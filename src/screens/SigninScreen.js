@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import {NavigationEvents} from 'react-navigation';
+import { StyleSheet, Text, View, KeyboardAvoidingView } from "react-native";
+import { NavigationEvents } from "react-navigation";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 import { Context } from "../context/AuthContext";
@@ -9,10 +9,11 @@ const SigninScreen = () => {
   const { state, signin, clearErrorMessage } = useContext(Context);
 
   return (
-    <View style={styles.container}>
-      <NavigationEvents 
-      onWillBlur={clearErrorMessage}
-      /> 
+    <KeyboardAvoidingView
+      style={styles.container}
+      keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })}
+    >
+      <NavigationEvents onWillBlur={clearErrorMessage} />
       <AuthForm
         headerText="Sign In to Your Account"
         errorMessage={state.errorMessage}
@@ -23,7 +24,7 @@ const SigninScreen = () => {
         text="Don't have an account? Sign up instead"
         routeName="Signup"
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
